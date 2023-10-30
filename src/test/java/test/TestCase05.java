@@ -1,12 +1,13 @@
 package test;
 
 import DOM.RegistrationPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import webDriver.driverFactory;
+
+import java.io.File;
 
 public class TestCase05 {
     /* Verify can create an account in e-Commerce site and can share wishlist to other poeple using email.
@@ -68,7 +69,9 @@ for (String handle : driver.getWindowHandles()) {
 
             // Step 4: Fill New User information excluding the registered Email ID
             RegistrationPage registrationPage = new RegistrationPage(driver);
-            registrationPage.fillRegistrationForm("loc","phuc", "dang", "joasd1345@example.com", "your_password");
+            registrationPage.fillRegistrationForm("loc","phuc", "dang", "joasd1355@example.com", "your_password");
+            File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile, new File("screenshot_Input.png"));
 
 
             // step 5
@@ -79,6 +82,8 @@ for (String handle : driver.getWindowHandles()) {
             WebElement checkRegister = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div/div/ul/li/ul/li/span"));
             String checkExpected = "Thank you for registering with Main Website Store.";
             Assert.assertEquals(checkExpected.trim(),checkRegister.getText().trim());
+            File screenshotFile2 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile2, new File("screenshot_Input_Success.png"));
 
             //step 6
             WebElement TVmenu = driver.findElement(By.xpath("//*[@id=\"nav\"]/ol/li[2]/a"));
