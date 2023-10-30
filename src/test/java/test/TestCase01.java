@@ -1,6 +1,6 @@
 package test;
 
-import driver.driverFactory;
+import webDriver.driverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-public class TestFirst {
+public class TestCase01 {
 
     @Test
     public void test1() {

@@ -1,18 +1,13 @@
 package test;
 
-import driver.driverFactory;
+import webDriver.driverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-public class SecondTest {
+public class TestCase02 {
     /*
 
 Test Steps:
@@ -33,7 +28,6 @@ Test Steps:
     @Test
     public void test() {
         WebDriver driver = driverFactory.getChromeDriver();
-        boolean check = true;
         try {
             driver.get("http://live.techpanda.org/");
 
