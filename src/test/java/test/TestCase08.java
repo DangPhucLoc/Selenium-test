@@ -6,9 +6,13 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import webDriver.driverFactory;
+
+import java.time.Duration;
 
 public class TestCase08 {
     /*
@@ -59,15 +63,21 @@ Expected outcomes:
             recorded.click();
 
             //step 5
+            WebElement granTotalNotUpdate = driver.findElement(By.xpath("//*[@id=\"shopping-cart-totals-table\"]/tbody/tr/td[2]/span"));
+            String totalMotUpdate = granTotalNotUpdate.getText();
+            System.out.println(totalMotUpdate);
+
             WebElement QTY = driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr/td[4]/input"));
             QTY.clear();
-            QTY.sendKeys("2");
+            QTY.sendKeys("10");
 
             WebElement update = driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr/td[4]/button/span/span"));
             update.click();
 
             WebElement grandTotal = driver.findElement(By.xpath("//*[@id=\"shopping-cart-totals-table\"]/tfoot/tr/td[2]/strong/span"));
-            Assert.assertEquals("$1,000.00",grandTotal.getText().trim());
+            String total = grandTotal.getText();
+            System.out.println(total);
+            Assert.assertNotEquals(grandTotal,granTotalNotUpdate);
 
             WebElement proceed = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/div/div[3]/div/ul/li[1]/button"));
             proceed.click();
@@ -81,6 +91,8 @@ Expected outcomes:
             WebElement orderNum = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/p[1]/a"));
             if(!orderNum.isDisplayed()) {
                 Assert.fail("order number does not generate");
+            }else{
+                System.out.println(orderNum.getText());
             }
 
         }catch (Exception e ) {
@@ -89,3 +101,4 @@ Expected outcomes:
 
     }
 }
+

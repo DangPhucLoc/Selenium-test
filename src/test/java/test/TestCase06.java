@@ -86,10 +86,16 @@ Note:
 
                 CartPage cartPage = new CartPage(driver);
                 cartPage.clickAddToCart();
-
+            //step 6
                 CheckoutPage checkoutPage = new CheckoutPage(driver);
                 checkoutPage.checkout();
 
+                WebElement orderNum = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/p[1]/a"));
+                if(!orderNum.isDisplayed()) {
+                    Assert.fail("order number does not generate");
+                }else{
+                    System.out.println(orderNum.getText());
+                }
 
 
 
