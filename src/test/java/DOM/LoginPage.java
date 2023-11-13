@@ -17,6 +17,14 @@ public class LoginPage {
         passwordElement.sendKeys(password);
     }
 
+    public void fillLoginPage2(String id, String pass) {
+        WebElement idE = driver.findElement(By.id("username"));
+        idE.sendKeys(id);
+
+        WebElement passE = driver.findElement(By.id("login"));
+        passE.sendKeys(pass);
+    }
+
     public void clickLoginButton(){
         WebElement registerButton = driver.findElement(By.xpath("//*[@id=\"send2\"]"));
         System.out.println(registerButton.getText());
